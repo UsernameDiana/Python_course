@@ -30,16 +30,19 @@ accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
 
 
 # Training = computing variables W and b
+# Training step
 optimizer = tr.train.GradientDescentOptimizer(0.003) # learning rate
 # compute gradiant, feed it with small learning rate number
 train_steps = optimizer.minimize(loss_function)
 # after modifying, we apply for the next training step
 
 
-# Training loop
+# To compute value in Tenserflow, we need to define a session to run on a node with data
 sess = tf.Session()
 sess.run(init)
 
+
+# Training loop
 for i in range(1000)
     # Load batch of images and correct ansvers
     batch_x, batch_y = mnist.train.next_batch(100)
@@ -47,6 +50,7 @@ for i in range(1000)
 
     # train
     sess.run(train_steps, feed_dict = train_data)
+    # feed_dictionary with keys of x and y, the plaveholders
 
     # success ?
     a,c = sess.run ([accuracy, loss_function], feed_dict = train_data)
