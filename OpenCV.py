@@ -1,4 +1,5 @@
 # https://github.com/mciantyre/scipy-opencv-notebook
+# OpenCV - computer vision and machine learning software library
 import cv2
 import matplotlib.pyplot as plt
 

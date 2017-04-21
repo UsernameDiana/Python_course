@@ -1,18 +1,7 @@
 # https://github.com/mciantyre/scipy-opencv-notebook
 import cv2
 
-webget "http://1.bp.blogspot.com/-lzNnsDrxp-A/U7UEUDx9-aI/AAAAAAABDEM/_lWD43uxKOI/s1600/mare-08.jpg"
-
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.cluster import KMeans
-from sklearn.metrics import pairwise_distances_argmin
-from sklearn.datasets import load_sample_image
-from sklearn.utils import shuffle
-from time import time
-
-image = cv2.imread('./name of image.jpg')
-
+# webget "http://1.bp.blogspot.com/-lzNnsDrxp-A/U7UEUDx9-aI/AAAAAAABDEM/_lWD43uxKOI/s1600/mare-08.jpg"
 
 
 def read(path, switch_channels=True):
@@ -37,7 +26,22 @@ def create_plot(image, title=''):
     plt.axis('off')
     return plt
 
+image_path = './mare-08.jpg'
 
+img = read(image_path)
+img_small = resize(img, 320)
+create_plot(img_small)
+
+
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from sklearn.metrics import pairwise_distances_argmin
+from sklearn.datasets import load_sample_image
+from sklearn.utils import shuffle
+from time import time
 
 
 def apply_kmeans(image, n_colors=16):
